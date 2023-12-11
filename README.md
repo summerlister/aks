@@ -80,8 +80,5 @@ No modules.
 
 ## Outputs
 
-| Name | Description |
-|------|-------------|
-| <a name="output_cluster_id"></a> [cluster\_id](#output\_cluster\_id) | n/a |
-| <a name="output_kube_admin_config"></a> [kube\_admin\_config](#output\_kube\_admin\_config) | n/a |
+No outputs.
 <!-- END_TF_DOCS -->
