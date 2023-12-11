@@ -236,18 +236,18 @@ resource "azurerm_monitor_diagnostic_setting" "aks" {
     content {
       category = log_category.value
 
-      retention_policy {
-        enabled = false
-        days    = 0
-      }
+      # retention_policy {
+      #   enabled = false
+      #   days    = 0
+      # }
     }
   }
 
   metric {
     category = "AllMetrics"
 
-    retention_policy {
-      enabled = false
-    }
+    # retention_policy {
+    #   enabled = false
+    # }
   }
 }
