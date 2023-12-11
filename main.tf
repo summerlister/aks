@@ -47,7 +47,7 @@ data "azurerm_resource_group" "noderg" {
 }
 
 resource "azurerm_role_assignment" "contributor_noderg" {
-  for_each             = toset(var.noderg_role_assignment)
+  for_each             = toset(var.noderg_role_assignment_principal_ids)
   scope                = data.azurerm_resource_group.noderg.id
   role_definition_name = "Contributor"
   principal_id         = each.value
@@ -69,12 +69,11 @@ resource "azurerm_kubernetes_cluster" "cluster" {
   private_dns_zone_id               = var.private_cluster_enabled == true ? azurerm_private_dns_zone.privatezone[0].id : null
   node_resource_group               = var.node_resource_group
   private_cluster_enabled           = var.private_cluster_enabled
-  public_network_access_enabled     = var.public_network_access_enabled
   azure_policy_enabled              = var.azure_policy_enabled
   role_based_access_control_enabled = var.enable_rbac
 
   dynamic "api_server_access_profile" {
-    for_each = var.public_network_access_enabled ? [1] : []
+    for_each = var.private_cluster_enabled ? [1] : []
     content {
       authorized_ip_ranges = var.authorized_ip_ranges
       # subnet_id = var.default_node_pool.vnet_subnet_id

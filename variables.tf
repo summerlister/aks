@@ -47,11 +47,6 @@ variable "private_cluster_enabled" {
   default     = true
 }
 
-variable "public_network_access_enabled" {
-  description = "Whether public network access is allowed for this Kubernetes Cluster. Defaults to false. Changing this forces a new resource to be created."
-  default     = false
-}
-
 variable "private_dns_prefix" {
   description = "DNS prefix to use when creating the managed cluster. Changing this forces a new resource to be created. Must contain between 3 and 45 characters, and can contain only letters, numbers, and hyphens. It must start with a letter and must end with a letter or a number. If left unset dns_prefix will default to the var.cluster_name."
   default     = null
@@ -151,7 +146,7 @@ variable "enable_csi" {
   default     = true
 }
 
-variable "noderg_role_assignment" {
+variable "noderg_role_assignment_principal_ids" {
   description = "list of principal ids to add as Contributor to node RG"
   default     = []
 }
